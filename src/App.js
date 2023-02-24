@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
 function App() {
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+
+  const onclickId = (event) => setId(event.target.value);
+  const onclickPw = (event) => setPw(event.target.value);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        아이디 : <input type="text" value={id} onChange={onclickId} />
+      </div>
+      <div>
+        비밀번호 : <input type="password" value={pw} onChange={onclickPw} />
+      </div>
+      <button
+        onClick={() => {
+          alert(`회원님의 아이디는 ${id}이며, 비밀번호는 ${pw}입니다.`);
+          setId("");
+          setPw("");
+        }}
+      >
+        제출!
+      </button>
     </div>
   );
 }
